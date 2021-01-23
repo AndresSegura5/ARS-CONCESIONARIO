@@ -1,0 +1,301 @@
+/*--CSS--*/
+
+/*  PARTES:
+    * CABECERA: de la línea 21 a la línea 272.
+*/
+
+/*  Características de obligatoria implementación usadas en la cabecera:
+    * Uso de rem en todas las medidas y vh en la medida de la imagen de fondo de
+      la cabecera.
+		* LOS MEDIA QUERY NO ADMITEN «REM» COMO MEDIDA
+    * Implementación de menú responsivo en forma de hamburguesa
+    * Utilización de fuentes externas mediante importación por url.
+    * Uso de -webkit- para la correcta interpretación del código en todos los
+      navegadores.
+    * WEB responsiva.
+    * Reseteo de márgenes al principio del código.
+    * Uso de la propiedad linear-gradient.
+		* NO uso de la propiedad clip-path por la propia naturaleza del diseño
+    * Uso de espaciado entre letras.
+*/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Potta+One&display=swap');
+
+/* Se resetea el margin y el padding que por defecto pueda traer el navegador usuario.
+Se asigna una fuente predeterminada para cualquier texto que se cree. */
+* {
+	margin: 0;
+	padding: 0;
+	font-size: 10px;
+}
+
+/* Por defecto, aquel texto que se ponga dentro de «body» se alineará al centro
+excepto que en sus propiedades se indique lo contrario. Se asigna la familia
+tipográfica por defecto de la web*/
+body {
+	text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/*Todo lo embutido en este «DIV» estará contenido en unos márgenes laterales.*/
+.margenes-laterales {
+	width: 70%; /*El ancho del contenido embutido en el div será del 70% sobre el total de la web*/
+	margin: 0 auto; /*El ancho superior se aplicará en los laterales, pero no en la parte superior o inferior*/
+}
+
+/*La clase header comprender la parte gris de la página (menú y logo)*/
+header {
+	height: 10rem; /*Se le asigna altura*/
+	background: #262626; /*Se le asigna color*/
+	width: 100%; /*Se le asigna el 100% del cancho de la pagina, ya que se encuentra embutido en «margenes-laterales»*/
+  position: fixed; /*La cabecera se quedará fija en todo momento, aunque se haga scroll*/
+	z-index: 1; /*La propiedad superior obliga a establecer prioridad de capas, en este caso, y por no haber otra,
+							 ponemos nivel «1», por lo que se supondrá a cualquier elemento que esté por debajo, en nuestro caso,
+							 el resto de la web, para que cuando se haga «scroll» todo se quede detrás*/
+}
+
+/*Se crea el logo «| ARS COMPANY |»*/
+.logo {
+	float: left; /*Se posiciona a la izquierda*/
+	line-height: 10rem; /*Se le da un espaciado entre cualquier texto de su alrededor*/
+}
+
+/*Para el texto en sí del logo*/
+.logo a {
+	text-decoration: none; /*Se le quita cualquier decoración por defecto que pueda asignar el navegador usuario*/
+	font-size: 2.5rem; /*Se le asigna tamaño de letra*/
+	font-family: 'Balsamiq Sans'; /*Se le asigna fuente tipográfica*/
+	color: #fff; /*Se le da color*/
+	letter-spacing: 0.2rem; /*Se le da espaciado entre letras*/
+}
+
+/*Para el menú*/
+nav {
+	float: right;/*Se situará a a la derecha*/
+	line-height: 10rem; /*Se le da un espaciado entre cualquier texto de su alrededor*/
+	text-decoration: none;
+}
+
+/*Para los elementos del menú*/
+nav a {
+	text-decoration: none; /*Se le quita cualquier decoración por defecto que pueda asignar el navegador usuario*/
+	font-family: 'Balsamiq Sans'; /*Se le asigna fuente tipográfica*/
+	font-size: 2rem; /*Se le asigna tamaño de letra*/
+	margin: 0 1rem; /*Se le asigna distancia entre elementos*/
+	color: #fff; /*Se le da color*/
+}
+
+/*Para cuando el ratón se pasa por encima de cada elementos*/
+nav a:hover {
+  border-top: 0.25rem solid #E7E7E7; /*Se crea un borde superior encima del elemento, blanco y con el grosor indicado*/
+  border-bottom: 0.25rem solid #E7E7E7; /*Se crea un borde inferior debajo del elemento, blanco y con el grosor indicado*/
+  padding: 0.38rem 0; /*Se le asigna distancia entre elementos*/
+}
+
+/*Para el banner, que contiene la imagen y todo lo que haya en ella*/
+.banner-area {
+	width: 100%; /*Se le asigna el 100% del cancho de la pagina, ya que se encuentra embutido en «margenes-laterales»*/
+	height: 70vh; /*Se le asigna altura con la unidad de medida de obligatoria implementación, «vh»*/
+	position: fixed; /*Se quedará fija sin importa si se hace scroll o no*/
+  background-image: /*Se le da un background*/
+  linear-gradient(to right bottom, /*Se le da un degradado a la imagen elegida*/
+   rgba(214, 221, 221, 0.7),
+   rgba(214, 221, 221, 0.7)),
+   url('https://images.pexels.com/photos/261986/pexels-photo-261986.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+   background-size: cover; /*Se obliga que la imagen se adapte en anchura y altura al monitor del usuario*/
+   background-position: top; /*La imagen se adaptará en tamaño sin llegar a repetirse*/
+	 opacity: 0; /*Se crea una transición poco invasiva de la imagen al abrir la web*/
+ 	 -webkit-animation: fade-in 0.75s 0.25s ease-in forwards;
+ 					 animation: fade-in 0.75s 0.25s ease-in forwards;
+
+}
+
+/*Para el contenido de tipo «h2» contenido en el header*/
+.banner-area h2 {
+	padding-top: 14rem; /*Se le establece la distancia con respecto a su elemento inmediatamente superior*/
+	font-size: 7rem; /*Se le asigna tamaño de letra*/
+  letter-spacing: 1rem; /*Se le da espaciado entre letras*/
+  font-family: 'Balsamiq Sans'; /*Se le asigna fuente tipográfica*/
+	color: #fff; /*Se le da color*/
+	opacity: 0; /*Se crea una transición poco invasiva de la imagen al abrir la web*/
+	 -webkit-animation: fade-in 0.75s 0.25s ease-in forwards;
+					 animation: fade-in 0.75s 0.25s ease-in forwards;
+}
+
+/*---SECCIONES---*/
+/**SE CREA UNA SECCIÓN «LOREM IMPSUM» PARA LA CORRECTA VISUALIZACIÓN DE LA CABECERA*/
+
+/*Para todas las secciones que se creen en la web (no el texto contenido en ella, ya que «margenes-laterales»
+	es hijo y no padre)*/
+section {
+	width: 100%; /*Usará el 100% de la web*/
+	position: relative; /*Su posición será relativa*/
+	top: 45rem; /*Se desplazará esa cantidad con respecto al top de la página*/
+	background: #ebebeb; /*Se le asigna fondo*/
+	box-sizing: border-box; /*Esta propiedad respetará los márgenes de su padre. En otras palabras, permite que al hacer más pequeña
+														la página se respeten los márgenes*/
+}
+
+/*Para todo el contenido de tipo «h2» que se cree en cualquier sección*/
+section h2 {
+	padding-top: 5rem; /*Tendrá esa distancia con el elemento superior*/
+	font-size: 4rem; /*Se le asigna tamaño de letra*/
+	text-align: justify; /*Se justificará*/
+}
+
+/*Para todo el contenido de tipo «p» o párrafo que se cree en cualquier sección*/
+section p {
+	padding-top: 1rem; /*Tendrá esa distancia con el elemento superior*/
+	line-height: 3rem; /*Se le da un espaciado entre cualquier texto de su alrededor*/
+	text-align: justify; /*Se justificará*/
+	font-size: 1.6rem; /*Se le asigna tamaño de letra*/
+}
+
+/*Se adaptan las transiciones creadas para cuando la web se abre a cualquier navegadoror
+	sin importancia de su posible desactualización*/
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*Se crean media queries para hacer la web responsiva al tamaño del dispositivo usuario*/
+/*Por la naturaleza del diseño, solo se ve necesario la adaptación para dispositivos menores
+  que 1023px, ya que antes de ese tamaño, el texto se ajusta, como bien expliqué arriba, al
+	tamaño sin llegar a que se deforme nada.*/
+/*LA PROPIEDAD MEDIAQUERY OBLIGA EL USO DE PÍXELES*/
+
+/*Para cuando el dispostivo es mayor que 1023 píxeles*/
+@media screen and (min-width:1023px){
+	/*Se esconde el «checkbok» oculto que permite la apertura del menú hamburguesa»,
+		que se muestra cuando la pantalla es inferior a 1023px*/
+	nav input{
+		display: none;
+	}
+}
+
+/*Para cuando el dispostivo es menor que 1023 píxeles*/
+@media screen and (max-width:1023px){
+
+	/*Se esconde la palabra «CONCESIONARIO» de forma que no estorbe*/
+	.banner-area h2 {
+		display: none;
+	}
+
+	/*Para el menú (una hamburguesa diseñada más adelante en el código)*/
+	nav {
+		display: block; /*Se mostrará en bloque, el elemento genera un elemento de bloque*/
+	  position: relative; /*Su posición será relativa, es decir, con la propiedad inferior desplazaremos todas las secciones que se creen
+													tanto como se le indique*/
+	  z-index: 2; /*Por ser relativo*/
+	  top: 4rem; /*Tendrá una distancia con respecto al borde superior*/
+	  -webkit-user-select: none; /*Por defecto, la hamburguesa estará NO seleccionada*/
+	  				user-select: none;
+		line-height: 7rem; /*Tendrá distancia entre textos*/
+	}
+
+	/*Para los elementos del menú hamburguesa*/
+	nav a {
+	  text-decoration: none; /*Se le quita cualquier decoración por defecto que pueda asignar el navegador usuario*/
+	  color: #232323; /*Se le da color a los elementos*/
+	  transition: color 0.3s ease; /*Tendrán una transición poco invasiva cuando se muestren*/
+	}
+
+	/*Para el «checkbok» oculto detrás de la hamburguesa que permite la creación del menú en dispositivos pequeños*/
+	nav input {
+	  display: block; /*Se mostrará en bloque, el elemento genera un elemento de bloque*/
+	  width: 4rem; /*Se le asigna un ancho*/
+	  position: absolute; /*Su posición será absoluta, se situará como nosotros indiquemos y no como
+													otros elementos le puedan obligar*/
+	  cursor: pointer; /*El curso se pondrá en forma de puntero*/
+	  opacity: 0; /*No se verá*/
+	  z-index: 2; /*Tendrá superposicion a otros elementos*/
+	}
+
+	/*Para la creación de la hamburguesa, con pequeños «span» */
+	nav span 	{
+	  display: block; /*Se mostrará en bloque, el elemento genera un elemento de bloque*/
+	  width: 3rem; /*Se le asigna un ancho*/
+	  height: 0.4rem; /*Se le asigna una altura*/
+	  margin-bottom: 0.5rem; /*Se le asigna un margen inferior*/
+	  position: relative; /*Su posición será relativa, es decir, con la propiedad inferior desplazaremos todas las secciones que se creen
+													tanto como se le indique*/
+	  z-index: 1; /*Por ser relativo*/
+		background: #cdcdcd; /*Tendrá fondo*/
+	  border-radius: 0.3rem; /*Tendrá borde redondeado*/
+	  transform-origin: 0.4rem 0; /*Modifica el origen de la transformación*/
+		/*Convierte la hamburguesa en una cruz con una transición poco invasiva*/
+	  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+	              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+	              opacity 0.55s ease;
+	}
+
+	/*Cuando se ckicka en la hamburguesa, se transformará en una cruz*/
+	/*El primer y tercer span rotarán formando una cruz*/
+	/*El segundo span desaparececerá*/
+
+	/*Transformación de la cruz «X» que determina su forma*/
+	nav span:first-child {
+	  transform-origin: 0% 0%;
+	}
+
+	/*Transformación de la cruz «X» que determina su forma de crossmark*/
+	nav span:nth-last-child(2) {
+	  transform-origin: 0% 100%;
+	}
+
+	/*Cuando se clicka, se transforma la primera raya de la hamburguesa haciendo que
+    rote 45 grados positivos*/
+	nav input:checked ~ span {
+	  opacity: 1;
+	  transform: rotate(45deg) translate(-0.2rem, -0.1rem);
+	  background: #232323; /*Se le da color*/
+	}
+
+	/*Cuando se clicka, se esconde la segunda raya de la hamburguesa*/
+	nav input:checked ~ span:nth-last-child(3) {
+	  opacity: 0;
+	  transform: rotate(0deg) scale(0.2, 0.2);
+	}
+
+	/*Cuando se clicka, se transforma la tercera raya de la hamburguesa haciendo que
+		rote 45 grados negativos*/
+	nav input:checked ~ span:nth-last-child(2) {
+	  transform: rotate(-45deg) translate(0, -0.1rem);
+	}
+
+	/*Se crea el menú de la hamburguesa*/
+	.menu	{
+	  position: absolute; /*Se situará donde se le indique, con independencia
+													de los otros elementos*/
+	  margin: -10rem 0 0 -3.5rem; /*Espacio alrededor del elemento(lo que ocupa la caja blanca)*/
+		padding: 10rem 12rem 0 2rem; /*Espacio entre los elementos del menú y los border de la caja*/
+	  background: #ededed; /*Background*/
+	  list-style-type: none; /*Se le quita cualquier decoración por defecto que pueda asignar el navegador usuario*/
+
+		/*De su posición original, pasará a moverse totalmente a la izquierda, quedando lo que antes era el borde izquierdo
+		  como borde derecho*/
+	  transform-origin: 0% 0%;
+	  transform: translate(100%, 0);
+
+		/*La transición se hará de forma poco invasiva, desplazando el cubo despacio*/
+		-webkit-transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+	          transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+
+	}
+
+	/*Los elementos no cambiarán su estado si se llega a clickar sobre ellos*/
+	nav input:checked ~ div {
+	  transform: none;
+	}
+
+	/*Los elementos del menú cambiarán de color cuando se les pase el ratón por encima
+	  se elimirán los bordes superiores e inferiores del menú inicial(el de la pantalla grande)*/
+	nav a:hover {
+	  color: tomato;
+		border-top: 0;
+	  border-bottom: 0;
+	}
